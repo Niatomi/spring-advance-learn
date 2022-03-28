@@ -16,7 +16,6 @@ public class BeanA {
     private String string;
 
     public void setString(String string) {
-        System.out.println("string trough setter");
         this.string = string;
     }
 }
