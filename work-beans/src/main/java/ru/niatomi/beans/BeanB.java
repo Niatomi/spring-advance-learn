@@ -28,9 +28,4 @@ public class BeanB {
         return null;
     }
 
-    public void showBeanCString(String string) {
-        BeanC beanC = createBeanC();
-        beanC.setString(string);
-        System.out.println(beanC.getString());
-    }
 }

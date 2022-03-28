@@ -12,8 +12,4 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class BeanC {
-
-    @Setter
-    @Getter
-    private String string;
 }
