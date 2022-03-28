@@ -15,6 +15,7 @@ public class BeanA {
 
     private String string;
 
+    @Value("Example string")
     public void setString(String string) {
         this.string = string;
     }
