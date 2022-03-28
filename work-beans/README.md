@@ -4,7 +4,6 @@
 
 - Java 8
 - Maven 3.6.3
-- JUnit5
 - Lombok
 - Spring Boot 2
 
