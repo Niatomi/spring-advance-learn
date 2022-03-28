@@ -26,7 +26,7 @@
 
 Реализовать bean A, содержащий строку. Строка должна внедряться через setter.
 
-[Решение](work-beans/src/main/java/ru/niatomi/beans/BeanA.java)
+[Решение](src/main/java/ru/niatomi/beans/BeanA.java)
 
 ## Задача 2
 
