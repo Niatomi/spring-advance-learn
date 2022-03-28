@@ -13,4 +13,4 @@
 
 ## Список работ
 
-1. [Работа с Spring Context](tree/10_WorkBeans.md)
+1. [Работа с Spring Context](https://github.com/Niatomi/spring-advance-learn/tree/10_WorkBeans)
