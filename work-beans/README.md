@@ -49,3 +49,13 @@
 ```
 
 ## Вывод
+
+1. Реализация [BeanA](src/main/java/ru/niatomi/beans/BeanA.java) представляет собой метод, в котором с помощью аннотации `@Value` внедряется тестовая строка.
+
+2. Внедрение [BeanA](src/main/java/ru/niatomi/beans/BeanA.java) в [BeanB](src/main/java/ru/niatomi/beans/BeanB.java) осуществляется при помощи аннотации `@Autowired`, так как [BeanA](src/main/java/ru/niatomi/beans/BeanA.java) имеет только конструктор, то внедрение происходит непосредственно через него.
+
+3. [BeanC](src/main/java/ru/niatomi/beans/BeanC.java) имеет аннотацию `@Scope("prototype")`, поэтому данный бин является прототипом. Для внедрения прототипа в синглтон [BeanB](src/main/java/ru/niatomi/beans/BeanB.java) используется метод `createBeanC()` с навешенной на него аннотацией `@Lookup`.
+
+4. [BeanD](src/main/java/ru/niatomi/beans/BeanD.java) и [BeanE](src/main/java/ru/niatomi/beans/BeanE.java) имеют похожие реализации, `initMethod()` и `destroyMethod()` c навешенными на них аннотациями `@PostConstruct` и `@PreDestroy` соотвественно. Только [BeanE](src/main/java/ru/niatomi/beans/BeanE.java) имеет `@Scope("prototype")`, из-за чего метод `destroyMethod()` не вызывается.
+
+5. См. пункт 4
