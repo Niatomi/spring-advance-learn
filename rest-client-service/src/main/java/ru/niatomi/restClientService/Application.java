@@ -1,3 +1,5 @@
+package ru.niatomi.restClientService;
+
 /**
  * @author niatomi
  */
