@@ -41,3 +41,5 @@
 /work-beans/target/
 /work-beans/work-beans.iml
 /rest-client-service/rest-client-service.iml
+/out/
+/rest-client-service/target/
