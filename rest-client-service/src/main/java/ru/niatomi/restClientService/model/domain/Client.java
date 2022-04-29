@@ -23,7 +23,7 @@ public class Client {
 
     @Id
     @Column(name = "id", length = 8)
-    private UUID id;
+    private Long id;
 
     @Column(name = "first_name", length = 32)
     private String firstName;
