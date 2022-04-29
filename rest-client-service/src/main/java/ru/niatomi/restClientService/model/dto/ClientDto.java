@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.time.LocalDate;
 
 /**
@@ -14,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class CreateClientDto {
+public class ClientDto {
     private String firstName;
     private String secondName;
     private String lastName;
