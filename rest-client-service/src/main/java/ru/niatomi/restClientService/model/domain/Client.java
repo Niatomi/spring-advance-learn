@@ -18,7 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "person_table")
+@Table(name = "client_table")
 public class Client {
 
     @Id
