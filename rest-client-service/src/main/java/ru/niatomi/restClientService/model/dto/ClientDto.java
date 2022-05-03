@@ -13,9 +13,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class ClientDto {
-    private String firstName;
-    private String secondName;
-    private String lastName;
+    private String fio;
     private String gender;
     private LocalDate birthDate;
     private String contactNumber;
