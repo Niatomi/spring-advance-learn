@@ -21,7 +21,7 @@
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
 
         <openapi.version>1.6.4</openapi.version>
-        <h2.version>2.1.210</h2.version>
+        <h2.version>1.4.200</h2.version>
         <lombok.version>1.18.22</lombok.version>
         <jupiter.version>5.8.2</jupiter.version>
 
