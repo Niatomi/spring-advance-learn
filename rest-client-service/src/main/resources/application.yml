@@ -2,3 +2,38 @@ server:
   port: ${server_port:8080}
   servlet:
     context-path: /api
+spring:
+  application:
+    name: person_service
+  profiles:
+    active: test
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+---
+spring:
+  activate:
+    on-profile: prod
+  name: prod
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/first_db
+    username: postgres
+    password: admin
+
+---
+spring:
+  activate:
+      on-profile: test
+  name: test
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:personsDb;DATABASE_TO_LOWER=TRUE
+    username: testUser
+    password: testUser
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2
