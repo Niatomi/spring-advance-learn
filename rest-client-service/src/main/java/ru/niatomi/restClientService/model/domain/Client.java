@@ -30,7 +30,7 @@ public class Client {
     @Column(name = "second_name", length = 32)
     private String secondName;
     @Column(name = "last_name", length = 32)
-    private String lastName;
+    private String thirdName;
 
     @Column(name = "gender")
     private String gender;
@@ -49,6 +49,5 @@ public class Client {
 
     @Column(name = "delete_date")
     private LocalDate deleteDate;
-
 
 }
