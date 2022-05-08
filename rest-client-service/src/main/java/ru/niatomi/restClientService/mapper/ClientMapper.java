@@ -16,27 +16,15 @@ public interface ClientMapper {
 
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
 
-    @Mapping(source = "client", target = "fio", qualifiedBy = ToFioConverter.class)
+    @Mapping(target = "fio", expression = "java(client.getFirstName() + ' ' + client.getSecondName() + ' ' + client.getThirdName())")
     ClientDto toDto(Client client);
 
-    @Mapping(source = "fio", target = "client", qualifiedBy = ToNamesConverter.class)
+    String regexp = "\\s+";
+    @Mappings({
+        @Mapping(target = "firstName", expression = "java(clientDto.getFio().split(regexp)[0])"),
+        @Mapping(target = "secondName", expression = "java(clientDto.getFio().split(regexp)[1])"),
+        @Mapping(target = "thirdName", expression = "java(clientDto.getFio().split(regexp)[2])")
+    })
     Client toClient(ClientDto clientDto);
 
-    @ToFioConverter
-    static String convertToFio(Client client) {
-        String fio = client.getFirstName() + " " + client.getSecondName() + " " + client.getThirdName();
-        return fio;
-    }
-
-    @ToNamesConverter
-    static Client convertToNames(ClientDto clientDto) {
-        String[] values = clientDto.getFio().split("\\s+");
-        Client client = new Client();
-
-        client.setFirstName(values[0]);
-        client.setSecondName(values[1]);
-        client.setThirdName(values[2]);
-
-        return client;
-    }
 }
