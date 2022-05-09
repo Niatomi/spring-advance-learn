@@ -2,8 +2,10 @@ package ru.niatomi.restClientService.mapper;
 
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
-import ru.niatomi.restClientService.model.domain.Client;
+import ru.niatomi.restClientService.model.domain.*;
 import ru.niatomi.restClientService.model.dto.ClientDto;
+
+import javax.validation.Valid;
 
 /**
  * @author niatomi
@@ -25,6 +27,6 @@ public interface ClientMapper {
         @Mapping(target = "secondName", expression = "java(clientDto.getFio().split(regexp)[1])"),
         @Mapping(target = "thirdName", expression = "java(clientDto.getFio().split(regexp)[2])")
     })
-    Client toClient(ClientDto clientDto);
+    Client toClient(@Valid ClientDto clientDto);
 
 }
