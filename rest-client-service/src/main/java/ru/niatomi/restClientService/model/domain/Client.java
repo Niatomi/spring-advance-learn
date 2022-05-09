@@ -7,9 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 /**
@@ -29,10 +27,12 @@ public class Client {
     @Column(name = "first_name", length = 32, nullable = false)
     @Pattern(regexp = "[а-яёА-ЯЁ-]+", message = "Должны быть только русские символы")
     private String firstName;
+
     @Column(name = "second_name", length = 32, nullable = false)
     @Pattern(regexp = "[а-яёА-ЯЁ-]+", message = "Должны быть только русские символы")
     private String secondName;
-    @Column(name = "last_name", length = 32, nullable = true)
+
+    @Column(name = "last_name", length = 32)
     @Pattern(regexp = "[а-яёА-ЯЁ-]+", message = "Должны быть только русские символы")
     private String thirdName;
 
@@ -42,15 +42,16 @@ public class Client {
 
     @Column(name = "birthdate")
     @DateTimeFormat(pattern = "dd-mm-yyyy")
+    @PastOrPresent(message = "Дата рождения не может быть в будующем")
     private LocalDate birthDate;
 
-    @Column(name = "contact_number")
+    @Column(name = "contact_number", unique = true)
     @Pattern(regexp = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$",
              message = "Номер телефона должен быть похож на +79999999999, 8(999)999-99-99 , +7 999 999 99 99")
     private String contactNumber;
 
-    @Column(name = "email")
-    @Email
+    @Column(name = "email", unique = true)
+    @Email(message = "Почта должна быть похожа на example@example.example")
     private String email;
 
     @Column(name = "sign_up_date")
