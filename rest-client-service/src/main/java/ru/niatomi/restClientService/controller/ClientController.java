@@ -24,7 +24,7 @@ public interface ClientController {
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
             @ApiResponse(responseCode = "400", description = "Something failed validation")
     })
-    ResponseEntity<Client> signUp(@RequestBody ClientDto clientDto);
+    ResponseEntity<String> signUp(@RequestBody ClientDto clientDto);
 
     @GetMapping("/get/{id}")
     @Operation(description = "Request for get one by id client.")
@@ -35,7 +35,7 @@ public interface ClientController {
     })
     ResponseEntity<Client> getClient(@PathVariable Long id);
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     @Operation(description = "Request for update client by id .")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Request is ok.",
@@ -45,7 +45,7 @@ public interface ClientController {
     ResponseEntity<String> updateClient(@PathVariable Long id,
                                         @RequestBody ClientDto clientDto);
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     @Operation(description = "Request for delete client by id.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Request is ok.",
@@ -85,7 +85,7 @@ public interface ClientController {
     })
     ResponseEntity<Page<Client>> getClientsByMail(@RequestParam Integer page,
                                                   @RequestParam(defaultValue = "10") Integer size,
-                                                  @PathVariable String mailDomain);
+                                                  @RequestBody String mailDomain);
 
 
 
