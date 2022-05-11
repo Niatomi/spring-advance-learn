@@ -1,5 +1,6 @@
 package ru.niatomi.restClientService.service;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import ru.niatomi.restClientService.model.domain.Client;
@@ -20,6 +21,6 @@ public interface ClientService {
     Client getClient(Long id);
     Page<Client> getClients(Pageable page);
     Page<Client> getClientsBySecondName(Pageable page);
-    Page<Client> getClientsByMail(Pageable page);
+    Page<Client> getClientsByMail(String emailDomain, Pageable page);
 
 }
