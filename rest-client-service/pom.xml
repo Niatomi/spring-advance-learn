@@ -26,6 +26,7 @@
         <jupiter.version>5.8.2</jupiter.version>
 
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <org.liquibase.version>4.9.0</org.liquibase.version>
 
     </properties>
 
@@ -107,10 +108,11 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--        <dependency>-->
-<!--            <groupId>org.liquibase</groupId>-->
-<!--            <artifactId>liquibase-core</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${org.liquibase.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
