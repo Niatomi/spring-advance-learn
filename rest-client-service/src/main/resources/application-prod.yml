@@ -1,0 +1,16 @@
+spring:
+  activate:
+    on-profile: prod
+  name: prod
+  h2:
+    console:
+      enabled: false
+      path: /h2
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/clients_db
+    username: postgres
+    password: admin
+#  liquibase:
+#    changelog: classpath:/db/changelogs/master-changelog.xml
+#    contexts: prod

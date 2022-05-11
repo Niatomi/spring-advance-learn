@@ -1,4 +1,4 @@
-package ru.niatomi.restClientService.controller;
+package ru.niatomi.restClientService.exceptions;
 
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
