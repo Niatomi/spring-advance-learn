@@ -11,3 +11,5 @@ spring:
     active: test
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: none
