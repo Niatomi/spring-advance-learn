@@ -138,4 +138,113 @@
                 <column name="sign_up_date" valueDate="2007-07-07"/>
             </insert>
         </changeSet>
+
+        <changeSet id="insert-data-into-prod" author="niatomi" context="prod">
+            <insert tableName="client_table">
+                <column name="id" value="1"/>
+                <column name="first_name" value="Виталий"/>
+                <column name="second_name" value="Василенко"/>
+                <column name="third_name" value="Егорович"/>
+                <column name="gender" value="MALE"/>
+                <column name="birthdate" valueDate="2002-05-01"/>
+                <column name="contact_number" value="89999999999"/>
+                <column name="email" value="vasilenko@domain.org"/>
+                <column name="sign_up_date" valueDate="2014-05-01"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="2"/>
+                <column name="first_name" value="Роман"/>
+                <column name="second_name" value="Сакутин"/>
+                <column name="gender" value="MALE"/>
+                <column name="birthdate" valueDate="1990-05-01"/>
+                <column name="contact_number" value="89999999998"/>
+                <column name="email" value="skutin@domain.org"/>
+                <column name="sign_up_date" valueDate="2015-05-01"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="3"/>
+                <column name="first_name" value="Евгения"/>
+                <column name="second_name" value="Давыдова"/>
+                <column name="third_name" value="Станиславовна"/>
+                <column name="gender" value="FEMALE"/>
+                <column name="birthdate" valueDate="2003-05-01"/>
+                <column name="contact_number" value="+7(999)999-99-97"/>
+                <column name="email" value="davidovna.e@gmail.com"/>
+                <column name="sign_up_date" valueDate="2012-05-01"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="4"/>
+                <column name="first_name" value="Максим"/>
+                <column name="second_name" value="Сорокин"/>
+                <column name="gender" value="MALE"/>
+                <column name="birthdate" valueDate="1998-12-12"/>
+                <column name="contact_number" value="8(999)999-99-95"/>
+                <column name="email" value="sorokin@gmail.com"/>
+                <column name="sign_up_date" valueDate="2016-05-01"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="5"/>
+                <column name="first_name" value="Клянин"/>
+                <column name="second_name" value="Александр"/>
+                <column name="third_name" value="Витальевич"/>
+                <column name="gender" value="MALE"/>
+                <column name="birthdate" valueDate="2003-06-06"/>
+                <column name="contact_number" value="+7(999)999-99-93"/>
+                <column name="email" value="klyanin@gmail.com"/>
+                <column name="sign_up_date" valueDate="2017-05-01"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="6"/>
+                <column name="first_name" value="Воробьёва"/>
+                <column name="second_name" value="Елена"/>
+                <column name="third_name" value="Андреевна"/>
+                <column name="gender" value="FEMALE"/>
+                <column name="birthdate" valueDate="2001-11-11"/>
+                <column name="contact_number" value="+7(999)999-99-80"/>
+                <column name="email" value="vorobyeva@mail.ru"/>
+                <column name="sign_up_date" valueDate="2015-05-01"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="7"/>
+                <column name="first_name" value="Ершова"/>
+                <column name="second_name" value="Виктория"/>
+                <column name="gender" value="FEMALE"/>
+                <column name="birthdate" valueDate="2003-11-11"/>
+                <column name="contact_number" value="+7(999)999-99-81"/>
+                <column name="email" value="ershova@rambler.org"/>
+                <column name="sign_up_date" valueDate="2013-11-11"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="8"/>
+                <column name="first_name" value="Малкин"/>
+                <column name="second_name" value="Михаил"/>
+                <column name="gender" value="MALE"/>
+                <column name="birthdate" valueDate="2001-06-04"/>
+                <column name="contact_number" value="8(999)999-99-70"/>
+                <column name="email" value="malkin@rambler.org"/>
+                <column name="sign_up_date" valueDate="2015-11-11"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="9"/>
+                <column name="first_name" value="Котякин"/>
+                <column name="second_name" value="Роман"/>
+                <column name="third_name" value="Сергеевич"/>
+                <column name="gender" value="MALE"/>
+                <column name="birthdate" valueDate="1998-06-04"/>
+                <column name="contact_number" value="8(999)999-99-65"/>
+                <column name="email" value="kotyakin.roman@mail.com"/>
+                <column name="sign_up_date" valueDate="2007-07-07"/>
+            </insert>
+            <insert tableName="client_table">
+                <column name="id" value="10"/>
+                <column name="first_name" value="Шаров"/>
+                <column name="second_name" value="Константин"/>
+                <column name="third_name" value="Александрович"/>
+                <column name="gender" value="MALE"/>
+                <column name="birthdate" valueDate="1999-11-12"/>
+                <column name="contact_number" value="8(999)999-99-66"/>
+                <column name="email" value="sharov@mail.com"/>
+                <column name="sign_up_date" valueDate="2007-07-07"/>
+            </insert>
+        </changeSet>
 </databaseChangeLog>
