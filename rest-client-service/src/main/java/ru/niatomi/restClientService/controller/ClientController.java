@@ -76,7 +76,7 @@ public interface ClientController {
                                                         @RequestParam(defaultValue = "10") Integer size,
                                                         @RequestParam String secondName);
 
-    @GetMapping("/pages/email/{emailDomain}")
+    @GetMapping("/pages/email")
     @Operation(description = "Request for get clients in pages by their email domain.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Request is ok.",
@@ -85,7 +85,7 @@ public interface ClientController {
     })
     ResponseEntity<Page<Client>> getClientsByMail(@RequestParam Integer page,
                                                   @RequestParam(defaultValue = "10") Integer size,
-                                                  @RequestBody String mailDomain);
+                                                  @RequestParam String mailDomain);
 
 
 
