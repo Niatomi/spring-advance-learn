@@ -11,6 +11,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/clients_db
     username: postgres
     password: admin
-#  liquibase:
-#    changelog: classpath:/db/changelogs/master-changelog.xml
-#    contexts: prod
+  liquibase:
+    changelog: classpath:/db/master-changelog.xml
+    contexts: prod
