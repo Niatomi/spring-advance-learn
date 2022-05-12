@@ -46,7 +46,7 @@ public class ClientServiceImpl implements ClientService {
         checkIsClientAlreadyExists(client);
         client.setSignUpDate(LocalDate.now());
         clientRepository.save(client);
-        return "{created: true}";
+        return "Client created";
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ClientServiceImpl implements ClientService {
     public String updateClient(@Valid Client client) {
         checkIsClientAlreadyExists(client);
         clientRepository.save(client);
-        return "{updated: true}";
+        return "Client updated";
     }
 
     @Override
@@ -75,7 +75,6 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Page<Client> getClients(Pageable page) {
-//        page.
         return clientRepository.findAll(page);
     }
 
