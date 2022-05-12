@@ -4,7 +4,7 @@ server:
     context-path: /api
 spring:
   application:
-    name: person_service
+    name: client_service
   main:
     banner-mode: off
   profiles:
