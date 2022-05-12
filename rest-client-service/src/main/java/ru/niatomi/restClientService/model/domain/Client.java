@@ -30,7 +30,7 @@ public class Client {
     @Pattern(regexp = "[а-яёА-ЯЁ-]+", message = "Должны быть только русские символы")
     private String secondName;
 
-    @Pattern(regexp = "[а-яёА-ЯЁ-]+", message = "Должны быть только русские символы")
+    @Pattern(regexp = "([а-яёА-ЯЁ-]+)?", message = "Должны быть только русские символы, либо отчества вовсе может не быть")
     private String thirdName;
 
     @Enumerated(EnumType.STRING)
