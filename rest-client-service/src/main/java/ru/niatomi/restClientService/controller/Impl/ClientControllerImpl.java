@@ -52,7 +52,7 @@ public class ClientControllerImpl implements ClientController {
     public ResponseEntity<Page<Client>> getClientsBySecondName(Integer page, Integer size, String secondName) {
         Sort sort = Sort.by(Sort.Order.asc("secondName"));
         PageRequest pageRequest = PageRequest.of(page, size, sort);
-        Page<Client> clients = clientService.getClientsBySecondName(pageRequest);
+        Page<Client> clients = clientService.getClientsBySecondName(secondName, pageRequest);
         return ResponseEntity.ok(clients);
     }
 

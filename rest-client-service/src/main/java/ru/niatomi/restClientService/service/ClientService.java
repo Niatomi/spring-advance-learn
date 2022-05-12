@@ -22,7 +22,7 @@ public interface ClientService {
 
     Client getClient(Long id);
     Page<Client> getClients(Pageable page);
-    Page<Client> getClientsBySecondName(Pageable page);
+    Page<Client> getClientsBySecondName(String secondName, Pageable page);
     Page<Client> getClientsByMail(String emailDomain, Pageable page);
 
 }
