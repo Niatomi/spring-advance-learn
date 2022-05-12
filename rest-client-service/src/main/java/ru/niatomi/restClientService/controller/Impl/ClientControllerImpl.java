@@ -32,8 +32,8 @@ public class ClientControllerImpl implements ClientController {
     }
 
     @Override
-    public ResponseEntity<String> updateClient(Long id, ClientDto clientDto) {
-        return ResponseEntity.ok(clientService.updateClient(id, clientDto));
+    public ResponseEntity<String> updateClient(Client client) {
+        return ResponseEntity.ok(clientService.updateClient(client));
     }
 
     @Override

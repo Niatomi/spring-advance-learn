@@ -8,6 +8,8 @@ import ru.niatomi.restClientService.model.dto.ClientDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import javax.validation.Valid;
+
 /**
  * @author niatomi
  */
@@ -16,7 +18,7 @@ public interface ClientService {
 
     String signUpClient(ClientDto clientDto);
     String deleteClient(Long id);
-    String updateClient(Long id, ClientDto clientDto);
+    String updateClient(@Valid Client client);
 
     Client getClient(Long id);
     Page<Client> getClients(Pageable page);

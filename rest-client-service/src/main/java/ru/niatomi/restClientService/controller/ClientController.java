@@ -42,8 +42,7 @@ public interface ClientController {
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
             @ApiResponse(responseCode = "400", description = "Something failed validation")
     })
-    ResponseEntity<String> updateClient(@PathVariable Long id,
-                                        @RequestBody ClientDto clientDto);
+    ResponseEntity<String> updateClient(@RequestBody Client client);
 
     @DeleteMapping("/delete/{id}")
     @Operation(description = "Request for delete client by id.")
