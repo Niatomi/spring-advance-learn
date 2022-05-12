@@ -5,7 +5,6 @@ spring:
   h2:
     console:
       enabled: false
-      path: /h2
   datasource:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/clients_db
@@ -14,3 +13,5 @@ spring:
   liquibase:
     changelog: classpath:/db/master-changelog.xml
     contexts: prod
+  jpa:
+    show-sql: false
