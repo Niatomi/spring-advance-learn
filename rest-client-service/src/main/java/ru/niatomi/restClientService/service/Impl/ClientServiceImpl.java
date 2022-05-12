@@ -79,8 +79,8 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Page<Client> getClientsBySecondName(Pageable page) {
-        return clientRepository.findAll(page);
+    public Page<Client> getClientsBySecondName(String secondName, Pageable page) {
+        return clientRepository.findBySecondName(secondName, page);
     }
 
     @Override
