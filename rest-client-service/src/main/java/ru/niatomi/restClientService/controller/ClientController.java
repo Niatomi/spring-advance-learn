@@ -22,7 +22,8 @@ public interface ClientController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Request is ok.",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
-            @ApiResponse(responseCode = "400", description = "Something failed validation")
+            @ApiResponse(responseCode = "400", description = "User already exists"),
+            @ApiResponse(responseCode = "406", description = "Validation failed")
     })
     ResponseEntity<String> signUp(@RequestBody ClientDto clientDto);
 
@@ -35,12 +36,13 @@ public interface ClientController {
     })
     ResponseEntity<Client> getClient(@PathVariable Long id);
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @Operation(description = "Request for update client by id .")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Request is ok.",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
-            @ApiResponse(responseCode = "400", description = "Something failed validation")
+            @ApiResponse(responseCode = "400", description = "User already exists"),
+            @ApiResponse(responseCode = "406", description = "Validation failed")
     })
     ResponseEntity<String> updateClient(@RequestBody Client client);
 
@@ -59,7 +61,6 @@ public interface ClientController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Request is ok.",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
-            @ApiResponse(responseCode = "400", description = "Page not exists")
     })
     ResponseEntity<Page<Client>> getClients(@RequestParam Integer page,
                                             @RequestParam(defaultValue = "10") Integer size);
@@ -69,7 +70,6 @@ public interface ClientController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Request is ok.",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
-            @ApiResponse(responseCode = "400", description = "Page not exists")
     })
     ResponseEntity<Page<Client>> getClientsBySecondName(@RequestParam Integer page,
                                                         @RequestParam(defaultValue = "10") Integer size,
@@ -80,7 +80,6 @@ public interface ClientController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Request is ok.",
                     content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}),
-            @ApiResponse(responseCode = "400", description = "Page not exists")
     })
     ResponseEntity<Page<Client>> getClientsByMail(@RequestParam Integer page,
                                                   @RequestParam(defaultValue = "10") Integer size,
