@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import ru.niatomi.restClientService.exceptions.ClientAlreadyExistsException;
 import ru.niatomi.restClientService.exceptions.ClientNotFoundException;
 import ru.niatomi.restClientService.mapper.ClientMapper;
 import ru.niatomi.restClientService.model.domain.Client;
@@ -13,10 +14,11 @@ import ru.niatomi.restClientService.model.dto.ClientDto;
 import ru.niatomi.restClientService.repository.ClientRepository;
 import ru.niatomi.restClientService.service.ClientService;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author niatomi
