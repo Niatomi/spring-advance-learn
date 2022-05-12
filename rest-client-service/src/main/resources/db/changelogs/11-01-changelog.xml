@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
     <changeSet id="create-tables" author="niatomi" context="prod,test">
         <createTable tableName="client_table">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_client_table"/>
             </column>
             <column name="first_name" type="VARCHAR(32)">
@@ -247,6 +247,7 @@
             <column name="sign_up_date" valueDate="2007-07-07"/>
         </insert>
     </changeSet>
+    
 
 
 </databaseChangeLog>
