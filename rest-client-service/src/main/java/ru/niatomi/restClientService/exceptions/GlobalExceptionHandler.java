@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -42,10 +43,17 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler({EmptyResultDataAccessException.class})
-    public ResponseEntity<ExceptionResponse> handleNotFoundException(EmptyResultDataAccessException ex) {
+    @ExceptionHandler({ConstraintViolationException.class})
+    public ResponseEntity<ExceptionResponse> handleValidationException(ConstraintViolationException ex) {
         ExceptionResponse exceptionResponse = new ExceptionResponse();
-        exceptionResponse.setMessage("Client doesn't exists");
+        exceptionResponse.setMessage(ex.getMessage());
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler({ClientNotFoundException.class})
+    public ResponseEntity<ExceptionResponse> handleValidationException(ClientNotFoundException ex) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse();
+        exceptionResponse.setMessage(ex.getMessage());
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
