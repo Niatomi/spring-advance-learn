@@ -248,4 +248,15 @@
         </insert>
     </changeSet>
 
+    <changeSet id="create-event-table" author="niatomi">
+        <createTable tableName="event_table">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_event_table"/>
+            </column>
+            <column name="clientId" type="bigint"/>
+            <column name="event" type="VARCHAR(6)"/>
+            <column name="event_date" type="date"/>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>
