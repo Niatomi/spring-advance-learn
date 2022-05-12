@@ -29,9 +29,21 @@ public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
 
+    private void checkIsClientAlreadyExists(Client client) {
+        Client clientByEmail = clientRepository.findByEmail(client.getEmail());
+        if (clientByEmail != null && client.getId() != (clientByEmail.getId()))
+            throw new ClientAlreadyExistsException("email");
+
+        Client clientByContactNumber = clientRepository.findByContactNumber(client.getContactNumber());
+        if (clientByContactNumber != null && !client.getId().equals(clientByContactNumber.getId()))
+            throw new ClientAlreadyExistsException("contact number");
+    }
+
     @Override
     public String signUpClient(ClientDto clientDto) {
         Client client = clientMapper.toClient(clientDto);
+        client.setId(clientRepository.count() + 1);
+        checkIsClientAlreadyExists(client);
         client.setSignUpDate(LocalDate.now());
         clientRepository.save(client);
         return "{created: true}";
@@ -39,21 +51,26 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public String deleteClient(Long id) {
-        clientRepository.deleteById(id);
-        return "{deleted: true, id:" + id + "}";
+        Optional<Client> client = clientRepository.findById(id);
+        if (!client.isPresent())
+            throw new ClientNotFoundException();
+
+        return "Client with id=" + id + " deleted";
     }
 
     @Override
-    public String updateClient(Long id, ClientDto clientDto) {
-        Client client = clientMapper.toClient(clientDto);
-        client.setId(id);
+    public String updateClient(@Valid Client client) {
+        checkIsClientAlreadyExists(client);
         clientRepository.save(client);
         return "{updated: true}";
     }
 
     @Override
     public Client getClient(Long id) {
-        return clientRepository.findById(id).get();
+        Optional<Client> client = clientRepository.findById(id);
+        if (!client.isPresent())
+            throw new ClientNotFoundException();
+        return client.get();
     }
 
     @Override
