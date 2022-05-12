@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
+import ru.niatomi.restClientService.model.validation.DateLessThan;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -18,6 +18,18 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "client_table")
+@DateLessThan.List({
+    @DateLessThan(
+            time1 = "birthDate",
+            time2 = "signUpDate",
+            message = "Дата регистрации не может быть меньше даты рождения"
+    ),
+    @DateLessThan(
+        time1 = "signUpDate",
+        time2 = "deleteDate",
+        message = "Дата удаления не может быть меньше даты регистрации"
+    )
+})
 public class Client {
 
     @Id
@@ -36,7 +48,6 @@ public class Client {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @DateTimeFormat(pattern = "dd-mm-yyyy")
     @PastOrPresent(message = "Дата рождения не может быть в будующем")
     private LocalDate birthDate;
 
