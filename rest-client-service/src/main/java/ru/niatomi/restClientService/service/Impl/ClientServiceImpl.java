@@ -48,8 +48,8 @@ public class ClientServiceImpl implements ClientService {
     public String signUpClient(ClientDto clientDto) {
         Client client = clientMapper.toClient(clientDto);
         client.setId(clientRepository.count() + 1);
-        checkIsClientAlreadyExists(client);
         client.setSignUpDate(LocalDate.now());
+        checkIsClientAlreadyExists(client);
         clientRepository.save(client);
         clientPublisher.publish(client.getId(), ClientEvent.CREATE);
         return "Client created";
