@@ -6,6 +6,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import ru.niatomi.restClientService.event.model.ClientEvent;
+import ru.niatomi.restClientService.event.publisher.ClientPublisher;
 import ru.niatomi.restClientService.exceptions.ClientAlreadyExistsException;
 import ru.niatomi.restClientService.exceptions.ClientNotFoundException;
 import ru.niatomi.restClientService.mapper.ClientMapper;
@@ -30,6 +32,7 @@ public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
+    private final ClientPublisher clientPublisher;
 
     private void checkIsClientAlreadyExists(Client client) {
         Client clientByEmail = clientRepository.findByEmail(client.getEmail());
@@ -48,6 +51,7 @@ public class ClientServiceImpl implements ClientService {
         checkIsClientAlreadyExists(client);
         client.setSignUpDate(LocalDate.now());
         clientRepository.save(client);
+        clientPublisher.publish(client.getId(), ClientEvent.CREATE);
         return "Client created";
     }
 
@@ -57,6 +61,8 @@ public class ClientServiceImpl implements ClientService {
         if (!client.isPresent())
             throw new ClientNotFoundException();
 
+        clientRepository.deleteById(id);
+        clientPublisher.publish(id, ClientEvent.DELETE);
         return "Client with id=" + id + " deleted";
     }
 
@@ -64,6 +70,7 @@ public class ClientServiceImpl implements ClientService {
     public String updateClient(@Valid Client client) {
         checkIsClientAlreadyExists(client);
         clientRepository.save(client);
+        clientPublisher.publish(client.getId(), ClientEvent.UPDATE);
         return "Client updated";
     }
 
