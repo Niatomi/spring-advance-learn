@@ -60,10 +60,49 @@
 8. В качестве библиотеки для преобразования объектов одного класса в объекты другого класса можно использовать Orika 1.4.6
    или MapStruct 1.4.2.Final (в связке с Lombok нужно использовать lombok-mapstruct-binding)
 9. REST API должно быть задокументировано с помощью фреймворка OpenAPI
-10. Исходный код должен быть покрыт Unit-тестами
 11. Коммиты, при работе над проектом, должны делаться регулярно. Не должно получиться так, что проект попал в репозиторий
     в виде одного большого коммита. Должна быть серия коммитов, показывающая прогресс работы над проектом.
     Комментарии к коммитам должны быть осмысленными
-12. Покрытие тестами необходимо определять при помощи maven-плагина JaCoCo
 
 ## Вывод
+
+1. Атрибуты, а также требования к форматно-логическому контролю представлены в классе [модели](src/main/java/ru/niatomi/restClientService/model/domain/Client.java)
+   * Котроль за датой регистрации и удаления представлен в [валидаторе](src/main/java/ru/niatomi/restClientService/model/validation/validator/DateLessThanValidator.java)
+2. Реализованы и задокументированы все необходимые методы REST API, документация OpenAPI к ним доступна по ссылке:  
+`http://localhost:8080/api/swagger-ui/index.html#`
+3. Сервис имеет два профиля для запуска
+   * [prod](src/main/resources/application-prod.yml)
+   * [test](src/main/resources/application-test.yml)
+
+Выбор профиля осуществляется в [application.yml](src/main/resources/application.yml) изменением конфигурации `active` 
+   ```yml
+     profiles:
+       active: test
+   ```
+4. Создание таблиц базы данных осуществляется через систему управления версиями базы данных Liquibase, список изменений для Liquibase расположен в [директории](src/main/resources/db)
+5. Скрипты по созданию тестовых данных расположены в [файле](src/main/resources/db/changelogs/11-01-changelog.xml) 
+6. Для prod конфигурации используется PostgreSQL 14
+
+   ```yml
+   datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/clients_db
+    username: {username}
+    password: {password}
+   ```
+   
+   Для test конфигурации используется H2
+
+   ```yml
+   datasource:
+    platform: h2
+    url: jdbc:h2:mem:clientsDB;DATABASE_TO_LOWER=TRUE
+    username: testUser
+    password: testUser
+    driverClassName: org.h2.Driver
+   ```
+
+7. В качестве библиотеки для преобразования объектов одного класса в объекты другого класса используется MapStruct 1.4.2.Final
+   Реализация представлена в [директории](src/main/java/ru/niatomi/restClientService/mapper)
+
+8. [Осуществлена](src/main/java/ru/niatomi/restClientService/event) запись информации в отдельную таблицу о создании, изменении, удалении в основной таблице.
