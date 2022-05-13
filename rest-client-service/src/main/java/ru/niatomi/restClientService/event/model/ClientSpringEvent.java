@@ -20,7 +20,7 @@ public class ClientSpringEvent extends ApplicationEvent {
     private Long clientId;
     @Enumerated(EnumType.STRING)
     private ClientEvent event;
-    private LocalDate date;
+    private LocalDate eventDate;
 
     public ClientSpringEvent(Object source, Long clientId, ClientEvent event) {
         super(source);
