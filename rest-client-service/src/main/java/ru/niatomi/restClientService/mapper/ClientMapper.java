@@ -26,7 +26,8 @@ public interface ClientMapper {
         @Mapping(target = "firstName", expression = "java(clientDto.getFio().split(regexp)[0])"),
         @Mapping(target = "secondName", expression = "java(clientDto.getFio().split(regexp)[1])"),
         @Mapping(source = "fio", target = "thirdName", qualifiedByName = "fioToThirdNameOrNull"),
-        @Mapping(source = "gender", target = "gender", qualifiedByName = "genderToEnumGender")
+        @Mapping(source = "gender", target = "gender", qualifiedByName = "genderToEnumGender"),
+        @Mapping(target = "deleteDate", ignore = true)
     })
     Client toClient(ClientDto clientDto);
 
