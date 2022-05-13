@@ -1,14 +1,24 @@
 package ru.niatomi.restClientService.event.model;
 
 import org.springframework.context.ApplicationEvent;
+import org.springframework.context.support.AbstractApplicationContext;
+import ru.niatomi.restClientService.service.Impl.ClientServiceImpl;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
  * @author niatomi
  */
+@Entity
+@Table(name = "event_table")
 public class ClientSpringEvent extends ApplicationEvent {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Long clientId;
+    @Enumerated(EnumType.STRING)
     private ClientEvent event;
     private LocalDate date;
 
@@ -16,6 +26,11 @@ public class ClientSpringEvent extends ApplicationEvent {
         super(source);
         this.clientId = clientId;
         this.event = event;
-        this.date = LocalDate.now();
+        this.eventDate = LocalDate.now();
     }
+
+    public ClientSpringEvent() {
+        super(ClientServiceImpl.class);
+    }
+
 }
